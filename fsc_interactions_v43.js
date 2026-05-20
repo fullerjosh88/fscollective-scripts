@@ -3,6 +3,22 @@
   if (window.__fscV43Loaded) return;
   window.__fscV43Loaded = true;
 
+  // ── Float bar visibility CSS (missing from native Webflow stylesheet) ────
+  (function(){
+    var id = 'fsc-float-bar-css';
+    if (document.getElementById(id)) return;
+    var s = document.createElement('style');
+    s.id = id;
+    s.textContent = [
+      '.fsc_float_bar.is-visible {',
+      '  transform: translateY(0) !important;',
+      '  pointer-events: auto !important;',
+      '  opacity: 1 !important;',
+      '}'
+    ].join('\n');
+    document.head.appendChild(s);
+  })();
+
   // ── Config ──────────────────────────────────────────────────────────────
   var CTA_HREF = 'https://calendly.com/d/ctyv-h7x-g98/15-minute-growth-opportunities-call';
   var SCROLL_OFFSET = 101;
